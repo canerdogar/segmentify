@@ -1,7 +1,7 @@
 import { urlValidator } from "./urlValidator";
 import { browserValidator } from "./browserValidator";
 import { osValidator } from "./osValidator";
-import { languageValidator } from "./languageValidator",
+import { languageValidator } from "./languageValidator";
 import { deviceValidator } from "./deviceValidator";
 import { currencyValidator } from "./currencyValidator";
 

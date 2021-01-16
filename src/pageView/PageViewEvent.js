@@ -12,7 +12,6 @@ class PageViewEvent {
 
     validate(param) {
         let isValid = commonParamValidator(param);
-        
         return isValid;
     }
 
