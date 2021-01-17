@@ -4,6 +4,7 @@ import { osValidator } from "./osValidator";
 import { languageValidator } from "./languageValidator";
 import { deviceValidator } from "./deviceValidator";
 import { currencyValidator } from "./currencyValidator";
+import { isObject } from "../util/isObject";
 
 export function commonParamValidator(param) {
     let isValid = isObject(param);

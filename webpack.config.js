@@ -1,9 +1,16 @@
 var path = require('path');
 var webpack = require('webpack');
+var fs = require("fs");
+
 module.exports = {
   mode: "development",
   devServer: {
     contentBase: './dist',
+    //host: "demo.segmentify.com",
+    //disableHostCheck: true,
+    //https: true,
+    //key: fs.readFileSync('./host.key'),
+    //cert: fs.readFileSync('./host.cert')
   },
   entry: './app.js',
   output: {

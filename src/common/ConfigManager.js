@@ -39,7 +39,10 @@ class ConfigManager {
             !isNullOrUndefined(userSessionKey) 
                 ? resolve() 
                 : sendUserSessionKeyRequest()
-                    .then((response) => storage.setToStorage(this.userSessionCookieKey, `${response[0]},${response[1]}`))
+                    .then((response) => {
+                        storage.setToStorage(this.userSessionCookieKey, `${response[0]},${response[1]}`);
+                        resolve();
+                    })
                     .catch(() => reject());
         });
     }

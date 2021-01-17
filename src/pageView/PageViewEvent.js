@@ -1,5 +1,6 @@
 import { commonParamValidator } from "../common/validators/commonParamValidator";
 import { categoryValidator, subCategoryValidator } from "./validator/pageViewValidator";
+import { sendEventRequest } from "../common/communicator/Communicator";
 
 class PageViewEvent {
 
@@ -18,8 +19,11 @@ class PageViewEvent {
         return isValid;
     }
 
-    apply() {
-        
+    apply(param) {
+        param.name = "PAGE_VIEW";
+        sendEventRequest(param).then((response) => {
+            console.log(response);
+        });
     }
 
 }
