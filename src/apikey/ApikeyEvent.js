@@ -1,4 +1,5 @@
 import { eventStore } from "../common/EventStore";
+import { configManager } from "../common/ConfigManager";
 
 class ApikeyEvent {
 
@@ -14,8 +15,8 @@ class ApikeyEvent {
         return typeof param === "string";
     }
 
-    apply() {
-        
+    apply(param) {
+        configManager.setApikey(param);
     }
 
 }

@@ -12,10 +12,10 @@ module.exports = {
   },
   module: {
       rules: [
-        {
-          test: /\.worker\.(c|m)?js$/i,
-          loader: "worker-loader"
-        },
+        // {
+        //   test: /\.worker\.(c|m)?js$/i,
+        //   loader: "worker-loader"
+        // },
         {
             test: /\.m?js$/,
             exclude: /(node_modules|bower_components)/,
