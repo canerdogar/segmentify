@@ -1,5 +1,7 @@
 export function osValidator(os) {
-    return [
+    const isValid = [
         'Windows', 'Linux', 'MacOS', 'Android', 'iOS', 'Other'
     ].includes(os);
+    !isValid && console.error("Please provide the os parameter correctly.");
+    return isValid;
 }

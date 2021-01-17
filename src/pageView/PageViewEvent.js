@@ -1,4 +1,5 @@
 import { commonParamValidator } from "../common/validators/commonParamValidator";
+import { categoryValidator, subCategoryValidator } from "./validator/pageViewValidator";
 
 class PageViewEvent {
 
@@ -12,6 +13,8 @@ class PageViewEvent {
 
     validate(param) {
         let isValid = commonParamValidator(param);
+        isValid = isValid && categoryValidator(param);
+        isValid = isValid && subCategoryValidator(param);
         return isValid;
     }
 

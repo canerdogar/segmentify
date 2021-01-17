@@ -7,17 +7,17 @@ import { currencyValidator } from "./currencyValidator";
 
 export function commonParamValidator(param) {
     let isValid = isObject(param);
-    isValid = isValid && (param.pageUrl === undefined || urlValidator(param.pageUrl));
-    isValid = isValid && (param.referrer === undefined || urlValidator(param.referrer));
-    isValid = isValid && (param.userAgent === undefined || typeof userAgent === "string");
-    isValid = isValid && (param.browser === undefined || browserValidator(param.browser));
-    isValid = isValid && (param.os === undefined || osValidator(param.os));
-    isValid = isValid && (param.osversion === undefined || typeof osversion === "string");
-    isValid = isValid && (param.params === undefined || isObject(param.params));
-    isValid = isValid && (param.currency === undefined || currencyValidator(param.currency));
-    isValid = isValid && (param.language === undefined || languageValidator(param.language));
-    isValid = isValid && (param.device === undefined || deviceValidator(param.device));
-    isValid = isValid && (param.testMode === undefined || typeof param.testMode === "boolean");
-    isValid = isValid && (param.nextPage === undefined || typeof param.nextPage === "boolean");
+    isValid = isValid && (!("pageUrl" in param) || urlValidator(param.pageUrl, "pageUrl"));
+    isValid = isValid && (!("referrer" in param) || urlValidator(param.referrer, "referrer"));
+    isValid = isValid && (!("userAgent" in param) || typeof userAgent === "string");
+    isValid = isValid && (!("browser" in param) || browserValidator(param.browser));
+    isValid = isValid && (!("os" in param) || osValidator(param.os));
+    isValid = isValid && (!("osversion" in param) || typeof osversion === "string");
+    isValid = isValid && (!("params" in param) || isObject(param.params));
+    isValid = isValid && (!("currency" in param) || currencyValidator(param.currency));
+    isValid = isValid && (!("language" in param) || languageValidator(param.language));
+    isValid = isValid && (!("device" in param) || deviceValidator(param.device));
+    isValid = isValid && (!("testMode" in param) || typeof param.testMode === "boolean");
+    isValid = isValid && (!("nextPage" in param) || typeof param.nextPage === "boolean");
     return isValid;
 }
