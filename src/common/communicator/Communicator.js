@@ -13,7 +13,7 @@ function sendEventRequest(event) {
             ...event,
             ...configManager.getUserSessionKey(),
         };
-        return makeRequest("POST", configManager.getSegmentifyApiUrl() + `add/events/v1.json?apiKey=${configManager.getApikey()}`, body);
+        return makeRequest("POST", configManager.getSegmentifyApiUrl() + `add/events/v1.json?apiKey=${configManager.getApikey()}`, [body]);
     }
 }
 
@@ -33,7 +33,7 @@ function makeRequest (method, url, body) {
         xhr.onreadystatechange = function() { 
             if (this.readyState === XMLHttpRequest.DONE) {
                 if (this.status === 200) {
-                    resolve(xhr.response);
+                    resolve(JSON.parse(xhr.response));
                     console.info("request successfully send to segmentify");
                 } else {
                     errorfunction();
@@ -41,7 +41,7 @@ function makeRequest (method, url, body) {
             }
         }   
         xhr.onerror = errorfunction;
-        body ? xhr.send(body) : xhr.send();
+        body ? xhr.send(JSON.stringify(body)) : xhr.send();
     });
 }
 

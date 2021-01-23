@@ -15,7 +15,7 @@ module.exports = {
   entry: './app.js',
   output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: '[name].js'
+      filename: 'segmentify.js'
   },
   module: {
       rules: [
@@ -28,23 +28,6 @@ module.exports = {
             exclude: /(node_modules|bower_components)/,
             use: {
               loader: 'babel-loader',
-              options: {
-                presets: [
-                  ['@babel/preset-env', 
-                    { 
-                      "corejs": "3",
-                      "useBuiltIns": "usage",
-                      "targets": {
-                        "edge": "17",
-                        "firefox": "60",
-                        "chrome": "67",
-                        "safari": "11.1",
-                        "ie": "11"
-                      } 
-                    }
-                  ]
-                ],
-              }
             }
           },
       ]

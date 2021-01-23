@@ -1,6 +1,7 @@
 import { commonParamValidator } from "../common/validators/commonParamValidator";
 import { categoryValidator, subCategoryValidator } from "./validator/pageViewValidator";
 import { sendEventRequest } from "../common/communicator/Communicator";
+import { render } from "../common/RecommendedTemplateRenderer";
 
 class PageViewEvent {
 
@@ -22,7 +23,10 @@ class PageViewEvent {
     apply(param) {
         param.name = "PAGE_VIEW";
         sendEventRequest(param).then((response) => {
-            console.log(response);
+            render(
+                response.responses?.[0]?.[0].params?.recommendationTemplate, 
+                response.responses?.[0]?.[0].params?.recommendedProducts["RECOMMENDATION_SMART_OFFERS|THIS_WEEK|NONE"]
+                );
         });
     }
 

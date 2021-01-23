@@ -10,10 +10,10 @@ export function commonParamValidator(param) {
     let isValid = isObject(param);
     isValid = isValid && (!("pageUrl" in param) || urlValidator(param.pageUrl, "pageUrl"));
     isValid = isValid && (!("referrer" in param) || urlValidator(param.referrer, "referrer"));
-    isValid = isValid && (!("userAgent" in param) || typeof userAgent === "string");
+    isValid = isValid && (!("userAgent" in param) || typeof param.userAgent === "string");
     isValid = isValid && (!("browser" in param) || browserValidator(param.browser));
     isValid = isValid && (!("os" in param) || osValidator(param.os));
-    isValid = isValid && (!("osversion" in param) || typeof osversion === "string");
+    isValid = isValid && (!("osversion" in param) || typeof param.osversion === "string");
     isValid = isValid && (!("params" in param) || isObject(param.params));
     isValid = isValid && (!("currency" in param) || currencyValidator(param.currency));
     isValid = isValid && (!("language" in param) || languageValidator(param.language));
