@@ -1,13 +1,12 @@
+jest.mock("../../src/common/communicator/Communicator");
 import { sendEventRequest } from "../../src/common/communicator/Communicator";
 import { pageViewEvent } from "../../src/pageView/PageViewEvent";
+jest.useFakeTimers();
 
-jest.mock("../../src/common/communicator/Communicator");
 
-test("page view mandatory fields", async () => {
+test("page view mandatory fields", () => {
 
-    sendEventRequest.mockImplementation(() => {
-        console.log("anan baban");
-    });
+    sendEventRequest.mockResolvedValue({})
 
     expect(pageViewEvent.validate({
         category: "dummy",
@@ -15,7 +14,9 @@ test("page view mandatory fields", async () => {
     })).toBeTruthy();
 
     expect(pageViewEvent.validate({
-        category: "dummy"
+        category: "dummy",
+        pageUrl: "http://demo.segmentify.com",
+        referrer: "http://demo.segmentify.com"
     })).toBeTruthy();
 
     expect(pageViewEvent.validate({
@@ -26,4 +27,6 @@ test("page view mandatory fields", async () => {
         category: "dummy"
     });
 
+    expect(sendEventRequest.mock.calls.length).toBe(1);
+    expect(sendEventRequest.mock.calls[0][0]).toEqual({name: "PAGE_VIEW", category: "dummy"});
 });

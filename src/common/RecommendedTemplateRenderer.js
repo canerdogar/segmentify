@@ -1,6 +1,11 @@
 import * as Mustache from "mustache";
 
 export function render(template, products) {
-    var output = Mustache.render(template, products);
-    console.log(output);
+    try {
+        const output = Mustache.render(template, products);
+        console.log(output);
+    } catch (e) {
+        console.error(e);
+    }
+    
 }
