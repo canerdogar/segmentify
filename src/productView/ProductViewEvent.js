@@ -1,5 +1,7 @@
 import { commonParamValidator } from "../common/validators/commonParamValidator";
 import { urlValidator } from "../common/validators/urlValidator";
+import { sendEventRequest } from "../common/communicator/Communicator";
+import { render } from "../common/RecommendedTemplateRenderer";
 
 class ProductViewEvent {
 
@@ -30,7 +32,14 @@ class ProductViewEvent {
     }
 
     apply() {
-        
+        param.name = "PRODUCT_VIEW";
+        sendEventRequest(param).then((response) => {
+            render(
+                response.responses?.[0]?.[0]?.params?.recommendationTemplate, 
+                response.responses?.[0]?.[0]?.params?.recommendedProducts,
+                response.responses?.[0]?.[0]?.params?.selector
+                );
+        });
     }
 
 }

@@ -24,8 +24,9 @@ class PageViewEvent {
         param.name = "PAGE_VIEW";
         sendEventRequest(param).then((response) => {
             render(
-                response.responses?.[0]?.[0].params?.recommendationTemplate, 
-                response.responses?.[0]?.[0].params?.recommendedProducts?.["RECOMMENDATION_SMART_OFFERS|THIS_WEEK|NONE"]
+                response.responses?.[0]?.[0]?.params?.recommendationTemplate, 
+                response.responses?.[0]?.[0]?.params?.recommendedProducts,
+                response.responses?.[0]?.[0]?.params?.selector
                 );
         });
     }

@@ -1,4 +1,3 @@
-import { TestScheduler } from "jest";
 jest.mock("../../../src/common/ConfigManager");
 import { configManager } from "../../../src/common/ConfigManager";
 import { sendEventRequest, sendUserSessionKeyRequest } from "../../../src/common/communicator/Communicator";
@@ -8,9 +7,11 @@ beforeAll(() => {
     const xhrMockClass = () => ({
         readyState: XMLHttpRequest.DONE,
         status: 200,
-        response: "SUCCESS",
+        response: "{}",
         open            : jest.fn(),
-        send            : jest.fn(),
+        send            : function() {
+            this.onreadystatechange();
+        },
         setRequestHeader: jest.fn(),
     });
       
@@ -31,5 +32,5 @@ test("sendEventRequest with apikey", async () => {
             sessionId: "sessionId"
         };
     });
-    await expect(sendEventRequest()).resolves.toBe("SUCCESS");
+    await expect(sendEventRequest()).resolves.toEqual({});
 });
