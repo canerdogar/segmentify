@@ -1,3 +1,6 @@
+/**
+ * Local storage holder
+ */
 export class LocalStorage {
 
     constructor() {

@@ -1,5 +1,5 @@
-import { eventStore } from "../common/EventStore";
-import { configManager } from "../common/ConfigManager";
+import { eventStore } from "../../common/EventStore";
+import { configManager } from "../../common/ConfigManager";
 
 class ApikeyEvent {
 

@@ -1,5 +1,8 @@
 import { configManager } from "../ConfigManager";
 
+/**
+ * Cookie storage holder
+ */
 export class CookieStorage {
 
     constructor() {

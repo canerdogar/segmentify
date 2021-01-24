@@ -1,3 +1,6 @@
+/**
+ * Returns the os which browser is running on.
+ */
 function getOS() {
 
     // system

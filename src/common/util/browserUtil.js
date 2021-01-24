@@ -1,3 +1,8 @@
+/**
+ * returns the browser type.
+ * only supports Opera, Firefox, Safari, IE, Edge, Chrome
+ * Instead of checking from userAgent which might be misleading, it makes feature detection.
+ */
 export function getBrowser() {
 
     // Opera 8.0+

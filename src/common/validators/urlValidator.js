@@ -5,7 +5,5 @@ export function urlValidator(str, urlName) {
       '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
       '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
       '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-    const isValid = !!pattern.test(str);
-    !isValid && console.error(`Please provide url ${urlName ? `of ${urlName} ` : ""}correctly.`);
-    return isValid;
+    return !!pattern.test(str);
   }

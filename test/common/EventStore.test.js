@@ -1,6 +1,6 @@
 import { eventStore } from "../../src/common/EventStore";
-import { pageViewEvent } from "../../src/pageView/PageViewEvent";
-import { apikeyEvent } from "../../src/apikey/ApikeyEvent";
+import { pageViewEvent } from "../../src/events/viewEvents/pageView/PageViewEvent";
+import { apikeyEvent } from "../../src/events/apikey/ApikeyEvent";
 
 test("event store test", () => {
 

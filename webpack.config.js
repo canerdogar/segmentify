@@ -3,7 +3,10 @@ var webpack = require('webpack');
 var fs = require("fs");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
+  optimization: {
+    minimize: true,
+  },
   devServer: {
     contentBase: './dist',
     //host: "demo.segmentify.com",

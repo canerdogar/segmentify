@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack serve --open",
-    "test": "jest --collectCoverage"
+    "test": "jest --collectCoverage --silent"
   },
   "author": "erdogarcan@gmail.com",
   "license": "ISC",

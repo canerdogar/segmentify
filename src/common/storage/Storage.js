@@ -2,6 +2,9 @@ import { CookieStorage } from "./CookieStorage";
 import { LocalStorage } from "./LocalStorage";
 import { configManager } from "../ConfigManager";
 
+/**
+ * Storage factory
+ */
 class Storage {
 
     getStorage() {

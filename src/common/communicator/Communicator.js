@@ -1,9 +1,17 @@
 import { configManager } from "../ConfigManager";
 
+/**
+ * Sends get request to get the userId and sessionId
+ */
 function sendUserSessionKeyRequest() {
     return makeRequest("GET", configManager.getSegmentifyApiUrl() + "get/key/v1.json?count=2");
 }
 
+/**
+ * Sends the given event to segmentify backend. If apikey not set then rejects.
+ * 
+ * @param {object} event 
+ */
 function sendEventRequest(event) {
     if (configManager.getApikey() === null) {
         console.error("no segmentify apikey is set");
@@ -17,6 +25,13 @@ function sendEventRequest(event) {
     }
 }
 
+/**
+ * XMLHTTPRequest wrapper. set to send and receive json format.
+ * 
+ * @param {HTTP methods} method 
+ * @param {string} url 
+ * @param {object} body 
+ */
 function makeRequest (method, url, body) {
     return new Promise(function (resolve, reject) {
         const xhr = new XMLHttpRequest();
